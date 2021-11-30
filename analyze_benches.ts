@@ -52,8 +52,7 @@ assert(output.length > 0);
 console.table(output);
 console.log('Ratio', output[0].ratio);
 
-const file = `
-// This file is part of Acala.
+const file = `// This file is part of Acala.
 
 // Copyright (C) 2020-2021 Acala Foundation.
 // SPDX-License-Identifier: GPL-3.0-or-later WITH Classpath-exception-2.0
@@ -72,7 +71,6 @@ const file = `
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 pub static RATIO: u64 = ${output[0].ratio};
-
 `;
 
 const output_path = process.argv.slice(2)[0];
