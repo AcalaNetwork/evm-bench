@@ -70,7 +70,7 @@ const file = `// This file is part of Acala.
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-pub static RATIO: u64 = ${output[0].ratio};
+pub const RATIO: u64 = ${output[0].ratio};
 `;
 
 const output_path = process.argv.slice(2)[0];
