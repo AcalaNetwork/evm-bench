@@ -65,6 +65,6 @@ pub const RATIO: u64 = ${output[0].ratio};
 
 const output_path = process.argv.slice(2)[0];
 if (output_path) {
-    const file_path = path.resolve(__dirname, output_path);
+    const file_path = path.isAbsolute(output_path) ? output_path : path.resolve(process.cwd(), output_path);
     fs.writeFileSync(file_path, file);
 }
