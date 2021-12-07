@@ -5,8 +5,7 @@
 	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"build": "waffle waffle.json && yarn generate-benches",
-		"generate-benches": "ts-node-transpile-only generate_benches.ts",
-		"analyze-benches": "ts-node-transpile-only analyze_benches.ts"
+		"generate-benches": "ts-node-transpile-only generate_benches.ts"
 	},
 	"dependencies": {
 		"@openzeppelin/contracts": "4.3.3",

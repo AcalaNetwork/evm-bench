@@ -1,19 +1,9 @@
-import assert from 'assert';
-import fs from 'fs';
-import path from 'path';
+#!/usr/bin/env node
 
-interface Bench {
-    name: string;
-    weight: number;
-    reads: number;
-    writes: number;
-};
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
-type Output = Bench & {
-    total_weight: number;
-    used_gas: number;
-    ratio: number;
-};
 
 const stdinBuffer = fs.readFileSync(0, 'utf-8'); // STDIN_FILENO = 0
 assert(stdinBuffer);
@@ -24,13 +14,13 @@ assert(bench_path);
 const bench_data = fs.readFileSync(bench_path, 'utf-8');
 const bench_config = fs.readFileSync(__dirname + '/build/benches.json', 'utf-8');
 
-const benches: Bench[] = JSON.parse(bench_data);
+const benches = JSON.parse(bench_data);
 const config = JSON.parse(bench_config);
 
 const db_read = 25_000_000;
 const db_write = 100_000_000;
 
-const output: Output [] = benches
+const output = benches
     .map(({ name, reads, writes, weight }) => {
         const used_gas = config[name]['used_gas'];
         const total_weight = weight + reads * db_read + writes * db_write;
