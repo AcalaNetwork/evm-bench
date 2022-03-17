@@ -40,7 +40,12 @@ const output = benches
 assert(output.length > 0);
 
 console.table(output);
-console.log('Ratio', output[0].ratio);
+
+let ratio = output[0].ratio;
+// round up ratio
+ratio = Math.ceil(ratio / 1_000) * 1_000;
+
+console.log('Ratio', ratio);
 
 const file = `// This file is part of Acala.
 
@@ -60,7 +65,7 @@ const file = `// This file is part of Acala.
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-pub const RATIO: u64 = ${output[0].ratio};
+pub const RATIO: u64 = ${ratio};
 `;
 
 const output_path = process.argv.slice(2)[0];
